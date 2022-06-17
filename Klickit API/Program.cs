@@ -18,7 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 
-builder.Services.AddScoped<MyContext, MyContext>();
 builder.Services.AddScoped<IProduct_Repository, Product_Repository>();
 builder.Services.AddScoped<IOrder_Repository, Order_Repository>();
 builder.Services.AddScoped<IProductOrder_Repository, ProductOrder_Repository>();

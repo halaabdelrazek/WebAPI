@@ -12,10 +12,7 @@ namespace DataAccessLayer.Data.Context
 {
     public class MyContext : IdentityDbContext<User>
     {
-        public MyContext()
-        {
-
-        }
+       
         public MyContext(DbContextOptions<MyContext> options) : base(options)
         {
         }

@@ -58,9 +58,8 @@ namespace BusinessLayer.OrderBL
 
             foreach (var item in _order.ProductOrders)
             {
-                var product = _productRepo.GetById(item.Id);
                 var newOrederProduct = new ProductOrder()
-                { OrderId = orderToAdd.Id, Order = orderToAdd, ProductId = product.Id,Product = product, ProductCount = item.ProductCount };
+                { OrderId = orderToAdd.Id, ProductId = item.Id, ProductCount = item.ProductCount };
 
                 _productOrderRepo.Add(newOrederProduct);
                 _productOrderRepo.SaveChanges();
