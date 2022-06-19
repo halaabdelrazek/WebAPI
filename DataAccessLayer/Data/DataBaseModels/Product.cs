@@ -20,7 +20,7 @@ namespace DataAccessLayer.Data.DataBaseModels
 
         public int StockNum { get; set; }
 
-        public decimal Salary { get; set; }
+        public decimal Price { get; set; }
 
         public virtual ICollection<ProductOrder> ProductOrders { get; set; }
 

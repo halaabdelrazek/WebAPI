@@ -14,7 +14,7 @@ namespace BusinessLayer.DTO_s.Product
 
         public string? Image { get; set; }
 
-        public decimal Salary { get; set; }
+        public decimal Price { get; set; }
 
     }
 }

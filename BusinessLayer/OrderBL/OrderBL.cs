@@ -20,6 +20,8 @@ namespace BusinessLayer.OrderBL
         private readonly IOrder_Repository orderRepo;
         private readonly IProductOrder_Repository _productOrderRepo;
         private readonly IProduct_Repository _productRepo;
+        private static int  count = 0;
+
 
         private readonly IMapper _mapper;
 
@@ -28,9 +30,10 @@ namespace BusinessLayer.OrderBL
             this.orderRepo = orderRepo;
             _mapper = mapper;
             _productRepo = productRepo;
+            _productOrderRepo = productOrderRepo;
         }
 
-        public ActionResult<IEnumerable<OrderReadDTO>> GetOrders()
+        public IEnumerable<OrderReadDTO> GetOrders()
         {
             var ordersFromDB = orderRepo.GetAll();
             return _mapper.Map<List<OrderReadDTO>>(ordersFromDB);
@@ -39,7 +42,8 @@ namespace BusinessLayer.OrderBL
 
         public OrderCreatedDTO Post(OrderWriteDTO _order, User _user)
         {
-            var count = 0;
+            count++;
+
             var orderToAdd = new Order();
 
             orderToAdd.Id = Guid.NewGuid();
@@ -73,6 +77,36 @@ namespace BusinessLayer.OrderBL
         }
 
 
+        public int PutOrder(Guid id, OrderWriteDTO _order)
+        {
+        
+            var orderToEdit = orderRepo.GetById(id);
+            if (orderToEdit is null)
+            {
+                // retun 0 to order not found
+
+                return 0;
+            }
+
+
+            _mapper.Map(_order, orderToEdit);
+
+
+            orderRepo.Update(orderToEdit);
+            orderRepo.SaveChanges();
+
+            // retun 1 to update order done
+
+            return 1;
+        }
+
+
+        public OrderReadDTO GetById(Guid id)
+        {
+            var orderFromDB = orderRepo.GetById(id);
+
+            return _mapper.Map<OrderReadDTO>(orderFromDB);
+        }
 
 
     }

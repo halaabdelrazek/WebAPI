@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.DTO_s.ProductOrder;
+using DataAccessLayer.Data.DataBaseModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace BusinessLayer.DTO_s.Order
 {
     public class OrderWriteDTO
     {
-        public ICollection<ProductOrderWriteDTO> ProductOrders { get; init; }
+        public OrderStatus? OrderStatus { get; set; }
+
+        public ICollection<ProductOrderWriteDTO>? ProductOrders { get; init; }
 
     }
 }

@@ -7,16 +7,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.DTO_s.ProductOrder
 {
-    public class ProductOrderReadDTO
+    public record ProductOrderReadDTO
     {
-        public Guid Id { get; set; }
+        public ProductReadDTO? Product { get; init; }
 
-        public string Name { get; set; }
-
-        public string? Image { get; set; }
-
-        public decimal Salary { get; set; }
-
-        public int ProductCount { get; set; }
+        public int ProductCount { get; init; }
     }
 }

@@ -59,7 +59,7 @@ namespace Klickit_API.Controllers
             }
 
 
-            return StatusCode(StatusCodes.Status201Created, "CustomerCreated Successfully");
+            return StatusCode(StatusCodes.Status201Created);
         }
         #endregion
 
@@ -101,7 +101,7 @@ namespace Klickit_API.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Sorry try again");
             }
 
-             return StatusCode(StatusCodes.Status201Created, "AdminCreated Successfully");
+            return StatusCode(StatusCodes.Status201Created);
 
 
         }

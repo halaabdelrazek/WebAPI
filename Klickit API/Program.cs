@@ -13,7 +13,24 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 
+var MyAllowOrigins = "_myAllowcOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowOrigins,
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+
+
+
+                      });
+});
+
 
 // Add services to the container.
 
@@ -103,6 +120,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 #endregion
 
 var app = builder.Build();
+app.UseCors(MyAllowOrigins);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -6,7 +6,11 @@ namespace BusinessLayer.OrderBL
 {
     public interface IOrderBL
     {
-        ActionResult<IEnumerable<OrderReadDTO>> GetOrders();
+        IEnumerable<OrderReadDTO> GetOrders();
         OrderCreatedDTO Post(OrderWriteDTO _order, User _user);
+
+        int PutOrder(Guid id, OrderWriteDTO _order);
+        OrderReadDTO GetById(Guid id);
+
     }
 }
